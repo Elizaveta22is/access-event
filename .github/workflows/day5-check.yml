@@ -1,0 +1,26 @@
+name: Day5 Check
+on: push
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install -r requirements.txt pytest
+      - name: Check tests exist
+        run: |
+          test -f tests/test_models.py
+          test -f tests/test_api.py
+      - name: Check docs exist
+        run: |
+          test -f docs/test_cases.md
+          test -f docs/bug_reports.md
+          test -f docs/user_manual.md
+          test -f docs/admin_manual.md
+          test -f docs/api.md
+          test -f docs/assessment.md
+      - name: Run tests
+        run: pytest -v
+      - run: echo "PASS: Day 5 checks completed"
