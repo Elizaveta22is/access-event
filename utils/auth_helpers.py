@@ -1,4 +1,4 @@
-﻿import datetime
+import datetime
 import functools
 import jwt
 from flask import current_app, jsonify, request
@@ -14,10 +14,10 @@ def verify_password(password, password_hash):
     return check_password_hash(password_hash, password)
 
 
-def generate_token(user_id, role):
+def generate_token(user):
     payload = {
-        "user_id": user_id,
-        "role": role,
+        "user_id": user.id,
+        "role": user.role,
         "exp": datetime.datetime.utcnow() + datetime.timedelta(hours=24),
     }
     return jwt.encode(payload, current_app.config["SECRET_KEY"], algorithm="HS256")
