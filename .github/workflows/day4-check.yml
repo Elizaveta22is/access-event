@@ -1,0 +1,39 @@
+﻿name: Day4 Frontend Check
+on: push
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check templates
+        run: |
+          test -f templates/base.html || echo "FAIL: base.html"
+          test -f templates/index.html || echo "FAIL: index.html"
+          test -f templates/events.html || echo "FAIL: events.html"
+          test -f templates/login.html || echo "FAIL: login.html"
+          test -f templates/register.html || echo "FAIL: register.html"
+          test -f templates/profile.html || echo "FAIL: profile.html"
+      - name: Check static
+        run: |
+          test -f static/css/style.css || echo "FAIL: style.css"
+          test -f static/js/main.js || echo "FAIL: main.js"
+      - name: Check media queries
+        run: |
+          grep -q "@media" static/css/style.css && echo "PASS: media" || echo "FAIL"
+      - name: Check showNotification
+        run: |
+          grep -q "showNotification" static/js/main.js && echo "PASS" || echo "FAIL"
+      - name: Check ARIA
+        run: |
+          grep -l "aria-label" templates/*.html && echo "PASS: aria" || echo "FAIL"
+      - name: Check Dockerfile
+        run: |
+          grep -q "^FROM" Dockerfile && echo "PASS: FROM" || echo "FAIL"
+          grep -q "^COPY" Dockerfile && echo "PASS: COPY" || echo "FAIL"
+          grep -q "^CMD" Dockerfile && echo "PASS: CMD" || echo "FAIL"
+      - name: Check docker-compose
+        run: |
+          grep -q "services" docker-compose.yml && echo "PASS" || echo "FAIL"
+          grep -q "postgres" docker-compose.yml && echo "PASS" || echo "FAIL"
+      - name: Syntax check
+        run: python -m py_compile app.py
