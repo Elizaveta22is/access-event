@@ -37,3 +37,4 @@ jobs:
           grep -q "postgres" docker-compose.yml && echo "PASS" || echo "FAIL"
       - name: Syntax check
         run: python -m py_compile app.py
+# update
