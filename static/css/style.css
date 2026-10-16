@@ -1,6 +1,4 @@
-﻿@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
-
-/* ===== Переменные темы ===== */
+﻿/* ===== Переменные темы ===== */
 :root {
   --bg-body: #f8fafc;
   --bg-card: #ffffff;
@@ -29,7 +27,7 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-  font-family: 'Manrope', -apple-system, 'Segoe UI', Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
   line-height: 1.65;
   color: var(--text-primary);
   background: var(--bg-body);
@@ -39,40 +37,26 @@ body {
   transition: background 0.4s ease, color 0.4s ease;
 }
 
-/* ===== Фоновое изображение ===== */
+/* ===== Фоновое свечение ===== */
 body::before {
   content: '';
   position: fixed;
   inset: 0;
-  background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&q=80');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  opacity: 0.08;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(124, 58, 237, 0.1) 0%, transparent 45%),
+    radial-gradient(circle at 85% 80%, rgba(217, 70, 239, 0.08) 0%, transparent 45%);
   z-index: 0;
   pointer-events: none;
+  opacity: 1;
   transition: opacity 0.4s ease;
 }
 
 [data-theme="dark"] body::before {
-  opacity: 0.22;
-}
-
-/* Дополнительное свечение поверх фона в тёмной теме */
-body::after {
-  content: '';
-  position: fixed;
-  inset: 0;
+  opacity: 1;
   background:
-    radial-gradient(circle at 15% 20%, rgba(124, 58, 237, 0.15) 0%, transparent 45%),
-    radial-gradient(circle at 85% 80%, rgba(217, 70, 239, 0.1) 0%, transparent 45%);
-  z-index: 0;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.4s ease;
+    radial-gradient(circle at 15% 20%, rgba(124, 58, 237, 0.2) 0%, transparent 45%),
+    radial-gradient(circle at 85% 80%, rgba(217, 70, 239, 0.15) 0%, transparent 45%);
 }
-
-[data-theme="dark"] body::after { opacity: 1; }
 
 body > * { position: relative; z-index: 1; }
 
@@ -128,7 +112,6 @@ nav {
   font-weight: 700;
 }
 
-/* Кнопка переключения темы */
 .theme-toggle {
   background: rgba(255, 255, 255, 0.2);
   border: none;
@@ -151,7 +134,6 @@ nav {
   transform: rotate(20deg) scale(1.08);
 }
 
-/* ===== Основной контент ===== */
 main {
   flex: 1;
   max-width: 1160px;
@@ -333,7 +315,6 @@ main {
   font-size: 0.98rem;
 }
 
-/* ===== Заголовки страниц ===== */
 h1 {
   font-size: 2.25rem;
   font-weight: 800;
@@ -407,7 +388,6 @@ h1 {
   font-size: 0.97rem;
 }
 
-/* ===== Бейджи ===== */
 .badges {
   margin: 1.25rem 0;
   display: flex;
@@ -433,7 +413,6 @@ h1 {
 .badge-cancelled { background: rgba(239, 68, 68, 0.15); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.3); }
 .badge-role      { background: rgba(124, 58, 237, 0.15); color: #a78bfa; border: 1px solid rgba(124, 58, 237, 0.3); }
 
-/* ===== Формы ===== */
 .form-container {
   max-width: 500px;
   margin: 1rem auto;
@@ -505,7 +484,6 @@ h1 {
 
 .form-container p a:hover { color: var(--accent-1); text-decoration: underline; }
 
-/* ===== Уведомления ===== */
 .notifications {
   position: fixed;
   top: 1.5rem;
@@ -536,7 +514,6 @@ h1 {
   to   { transform: translateX(0);    opacity: 1; }
 }
 
-/* ===== Профиль ===== */
 .profile-container { max-width: 720px; margin: 0 auto; }
 
 .profile-card {
@@ -569,7 +546,6 @@ h1 {
   box-shadow: var(--shadow-card);
 }
 
-/* ===== Подвал ===== */
 footer {
   background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
   color: #ffffff;
@@ -581,7 +557,6 @@ footer {
 footer p { margin-bottom: 0.35rem; opacity: 0.95; font-weight: 500; }
 footer small { opacity: 0.55; font-size: 0.85rem; }
 
-/* ===== Адаптивность ===== */
 @media (max-width: 768px) {
   .hero { padding: 3rem 1.5rem; }
   .hero h1 { font-size: 2.2rem; }
