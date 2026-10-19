@@ -1,0 +1,31 @@
+﻿{% extends "base.html" %}
+{% block title %}Личный кабинет — AccessEvent{% endblock %}
+{% block content %}
+<h1>Личный кабинет</h1>
+<section aria-labelledby="notif-heading">
+    <h2 id="notif-heading">Уведомления</h2>
+    <div id="notifications" aria-live="polite"></div>
+    <button id="mark-read">Отметить все прочитанными</button>
+</section>
+<section aria-labelledby="reg-heading2">
+    <h2 id="reg-heading2">Мои регистрации</h2>
+    <div id="my-registrations"></div>
+</section>
+<section aria-labelledby="create-heading">
+    <h2 id="create-heading">Создать мероприятие</h2>
+    <form id="event-form" aria-labelledby="create-heading">
+        <label for="e-title">Название</label>
+        <input id="e-title" type="text" name="title" required>
+        <label for="e-date">Дата и время (ГГГГ-ММ-ДД ЧЧ:ММ)</label>
+        <input id="e-date" type="text" name="event_date" required>
+        <label for="e-loc">Место</label>
+        <input id="e-loc" type="text" name="location">
+        <label for="e-desc">Описание</label>
+        <textarea id="e-desc" name="description"></textarea>
+        <label><input type="checkbox" name="is_inclusive"> Инклюзивное мероприятие</label>
+        <button type="submit">Создать</button>
+    </form>
+    <div id="event-msg" role="status" aria-live="polite"></div>
+</section>
+{% endblock %}
+{% block scripts %}<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>{% endblock %}

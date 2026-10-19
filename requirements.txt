@@ -1,6 +1,6 @@
-Flask>=3.0
-Flask-SQLAlchemy>=3.1
-PyJWT>=2.8
+﻿flask>=3.0
+flask-sqlalchemy>=3.1
 psycopg2-binary>=2.9
+pyjwt>=2.8
 python-dotenv>=1.0
 pytest>=8.0

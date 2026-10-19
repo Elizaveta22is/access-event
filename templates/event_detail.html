@@ -1,0 +1,30 @@
+﻿{% extends "base.html" %}
+{% block title %}Мероприятие — AccessEvent{% endblock %}
+{% block content %}
+<h1 id="event-title">Мероприятие {{ event_id }}</h1>
+<div id="event-info" aria-live="polite"></div>
+<div id="status-banner" class="status-banner"></div>
+<button id="register-btn">Зарегистрироваться</button>
+<div id="reg-result" role="status" aria-live="polite"></div>
+<section aria-labelledby="chat-heading">
+    <h2 id="chat-heading">Чат мероприятия</h2>
+    <div id="chat" role="log" aria-live="polite"></div>
+    <form id="chat-form" aria-labelledby="chat-heading">
+        <label for="chat-input" class="visually-hidden">Сообщение в чат</label>
+        <input id="chat-input" type="text" autocomplete="off">
+        <button type="submit">Отправить</button>
+    </form>
+</section>
+<section aria-labelledby="review-heading">
+    <h2 id="review-heading">Отзывы</h2>
+    <div id="reviews"></div>
+    <form id="review-form" aria-labelledby="review-heading">
+        <label for="rev-rating">Оценка (1-5)</label>
+        <input id="rev-rating" type="number" min="1" max="5">
+        <label for="rev-text">Комментарий</label>
+        <textarea id="rev-text"></textarea>
+        <button type="submit">Оставить отзыв</button>
+    </form>
+</section>
+{% endblock %}
+{% block scripts %}<script src="{{ url_for('static', filename='js/event_detail.js') }}"></script>{% endblock %}

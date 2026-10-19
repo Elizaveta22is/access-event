@@ -1,14 +1,9 @@
 ﻿{% extends "base.html" %}
-{% block title %}AccessEvent — главная{% endblock %}
+{% block title %}Каталог мероприятий — AccessEvent{% endblock %}
 {% block content %}
-<section class="hero">
-  <h1>Платформа инклюзивных мероприятий</h1>
-  <p>Находите события с сурдопереводом, визуальными оповещениями и доступной средой.</p>
-  <a href="{{ url_for('events_page') }}" class="btn btn-primary">Смотреть мероприятия</a>
-</section>
-<section class="features">
-  <div class="feature-card"><h2>🔔 Уведомления</h2><p>Все уведомления визуальные.</p></div>
-  <div class="feature-card"><h2>🤟 Сурдоперевод</h2><p>Мероприятия с жестовым переводом.</p></div>
-  <div class="feature-card"><h2>♿ Доступность</h2><p>Условия доступности указаны у каждого события.</p></div>
-</section>
+<h1>Каталог мероприятий</h1>
+<label><input type="checkbox" id="only-inclusive"> Только инклюзивные</label>
+<div id="events-list" aria-live="polite"></div>
+<div id="error" class="error" role="alert" aria-live="assertive"></div>
 {% endblock %}
+{% block scripts %}<script src="{{ url_for('static', filename='js/index.js') }}"></script>{% endblock %}
